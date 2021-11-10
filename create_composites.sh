@@ -2,8 +2,13 @@
 
 
 
-rm composites/*
-python create_manifest.py
+if [ ! -d composites ]; then
+    echo "Creating composites directory"
+    mkdir composites
+elif [ `ls composites | wc -l` -gt 0 ]; then
+    echo "Clearing composites directory"
+    rm composites/*
+fi
 
 function comp() {
 	geo=$1
