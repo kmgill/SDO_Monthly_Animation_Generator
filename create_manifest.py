@@ -10,8 +10,7 @@ import calendar
 
 ROOT = "/data/SDO/sdo.gsfc.nasa.gov/assets/img/browse/2021/10/"
 f = []
-for (dirpath, dirnames, filenames) in walk(ROOT):
-    f.extend(filenames)
+
     #break
 
 def parse_date(fn):
@@ -64,6 +63,9 @@ if __name__ == "__main__":
     ROOT = "/data/SDO/sdo.gsfc.nasa.gov/assets/img/browse/%s/%02d/"%(year, int(month))
 
     print("Processing for month %s, year %s in root %s"%(month, year, ROOT))
+    
+    for (dirpath, dirnames, filenames) in walk(ROOT):
+        f.extend(filenames)
 
     left_lst = find_files(".*_2048_0304\.jpg")
     r0_lst = find_files(".*_512_HMIIC\.jpg")
